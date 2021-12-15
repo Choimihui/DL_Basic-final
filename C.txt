@@ -1,0 +1,57 @@
+1차
+배치 128
+optimizer = optim.SGD(model.parameters(), learning_rate,
+                                momentum=0.9,
+                                weight_decay=1e-4,
+                                nesterov=True)
+
+에서 
+optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+
+1시간 24분 / 93.2
+
+2차
+배치 128
+최적화 아담으로 하고 
+self.conv2 = nn.Conv2d(64, 128, kernel_size=3, stride=1, padding=1, bias=False) 
+
+2시간 20분 / 93.68
+
+
+3차
+최적화 아담으로 하고
+드랍아웃 넣음 0.2로 레이어 1, 2, 3에 하나씩
+
+4차
+최적화 아담으로 하고
+드랍아웃 0.5로 변경
+
+5차
+아담
+드랍아웃 0.7로 변경
+
+1시간 05분 / 0.2, 0.5, 0.7 둘 다 92정도에 머무름
+
+
+6차
+아담
+랜덤 어그멘테이션 
+# TEST : Loss: (0.2068) | Acc: (93.69%) (9369/10000)
+
+
+
+7차
+최적화 sgd에서 
+데이터 어그멘테이션
+68%
+
+
+8차
+최적화 아담으로 다시 맞추고 실행
+sgd에서 안좋아지는거 맞음
+
+
+
+9차
+MixUp 
+23.3
